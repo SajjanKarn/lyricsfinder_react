@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-import "./App.css";
-
 import Navbar from "./components/navbar/navbar.component";
 import FormInput from "./components/input-form/input-form.component.jsx";
 import Footer from "./components/footer/footer.component";
 
 import Axios from "axios";
+import "./App.css";
 
 export default function App() {
   const [userData, setUserData] = useState({
     artistName: "",
     songName: "",
   });
+  
   const [lyrics, setLyrics] = useState(null);
 
   // handleOnInputChange
@@ -35,6 +35,7 @@ export default function App() {
       artistName: userData.artistName,
       songName: userData.songName,
     };
+    
     Axios.post("https://findmylyrics.herokuapp.com/get/lyrics", data)
       .then((response) => {
         console.log(response.data);
